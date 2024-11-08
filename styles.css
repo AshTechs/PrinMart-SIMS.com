@@ -1,0 +1,137 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+/* Left Section */
+.left-section {
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(0, 112, 186, 0.00) 0%, #0070BA 72%), url('img/welc.jpg') lightgray 50% / cover no-repeat;
+    display: inline-flex;
+    height: 992px;
+    padding: 729px 99px 49px 74px;
+    flex-direction: column;
+    width: 53.5%;
+    margin: 15px;
+}
+
+.left-section h1 {
+    font-size: 2rem;
+    background-color: rgb(0 112 186);
+    padding: 10px 5px;
+    width: 100%; 
+    color: white; 
+    font-size: 64px; 
+}
+
+.left-section p {
+    font-size: 24px;
+    background-color: rgb(0 112 186);
+    padding: 10px;
+    font-weight: 500;
+    color: white;
+}
+
+/* Right Section */
+.right-section {
+    padding: 50px;
+    width: 60%;
+    height: 992px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 75px;
+    height: 75px;
+    position: relative;
+    margin: 11rem 2rem 11rem 1rem;
+}
+
+.top-left {
+    margin: 1.5px;
+    background-color: #6ca869; /* Green color */
+    border-radius: 0 0 50% 0;
+}
+
+.top-right {
+    margin: 1.5px;
+    background-color: #5b82b3; /* Blue color */
+    border-radius: 0 0 0 50%;
+}
+
+.bottom-left {
+    margin: 1.5px;
+    background-color: #EF9360; /* Orange color */
+    border-radius: 0 50% 0 0;
+}
+
+.text {
+    display: flex;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    bottom: -8px;
+    left: 40px;
+}
+
+.text span {
+    color: #EF9360;
+    margin-left: 10px;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 20px;
+    color: #000;
+}
+
+/* User Roles */
+.roles {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-left: -200px;
+}
+
+li {
+    list-style: none;
+}
+.role a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #a7a6a6;
+    border-radius: 10px;
+    width: 75px;
+    height: 75px;
+    font-weight: bold;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.3s;
+}
+.role a:hover {
+    border-color: #EF9360;
+    opacity: .8;
+}
+.role i {
+    padding: 5px;
+    width: 40%;
+}
