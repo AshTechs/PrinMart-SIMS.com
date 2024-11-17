@@ -21,7 +21,8 @@
 }
 
 .login-container input[type="text"],
-.login-container input[type="password"] {
+.login-container input[type="password"],
+.login-container input[type="repeat-password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -50,7 +51,7 @@
     color: #270808;
 }
 
-.forgot-password {
+.forgot-password, p {
     display: inline-block;
     margin-bottom: 18px;
     font-size: 0.8rem;
@@ -62,7 +63,7 @@
     text-decoration: underline;
 }
 
-.login-button {
+.login-button, .SignUp {
     width: 100%;
     padding: 10px;
     background-color: #0070BA;
