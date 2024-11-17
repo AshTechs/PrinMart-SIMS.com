@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Admin Registration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="schreg.css">
+</head>
+<body>
+    <div class="container">
+        <h1>School Admin Registration</h1>
+        <p>Please fill in the following details to register your school</p>
+
+        <form id="registration-form">
+            <!-- Headmaster's personal details section -->
+            <fieldset>
+                <legend>Headmaster's personal details</legend>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="first-name">First name<span>*</span></label>
+                        <input type="text" id="first-name" placeholder="Enter first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="middle-name">Middle name</label>
+                        <input type="text" id="middle-name" placeholder="Enter middle name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name<span>*</span></label>
+                        <input type="text" id="last-name" placeholder="Enter last name" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="password">Password<span>*</span></label>
+                        <input type="password" id="password" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="repeat-password">Repeat password<span>*</span></label>
+                        <input type="password" id="repeat-password" placeholder="Repeat password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-number">Phone number<span>*</span></label>
+                        <input type="tel" id="phone-number" placeholder="Enter phone number" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- School details section -->
+            <fieldset>
+                <legend>School details</legend>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="school-logo">School Logo<span>*</span></label>
+                        <input type="file" id="school-logo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="school-name">School's name</label>
+                        <input type="text" id="school-name" placeholder="Enter name of school">
+                    </div>
+                    <div class="form-group">
+                        <label for="school-location">School's location</label>
+                        <input type="text" id="school-location" placeholder="Enter the location of the school">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="school-address">School's address</label>
+                        <input type="text" id="school-address" placeholder="Enter address of school">
+                    </div>
+                    <div class="form-group">
+                        <label for="school-postal-address">School's postal address</label>
+                        <input type="text" id="school-postal-address" placeholder="Enter postal address of school">
+                    </div>
+                    <div class="form-group">
+                        <label for="school-email">School's email address</label>
+                        <input type="email" id="school-email" placeholder="Enter email of school">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="security-question">Security question</label>
+                        <select id="security-question" required>
+                            <option value="" disabled selected>Select a security question</option>
+                            <option value="pet">What is your pet's name?</option>
+                            <option value="birthplace">What is your place of birth?</option>
+                            <option value="school">What was your first school?</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="security-answer">Security question answer</label>
+                        <input type="text" id="security-answer" placeholder="Enter your answer">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="mission-statement">Mission statement of the school (Optional)</label>
+                    <textarea id="mission-statement" placeholder="Enter mission statement of the school"></textarea>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

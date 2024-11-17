@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9F9D9D;
+}
+
+.container {
+    width: 100%;
+    background-color: #fff;
+    padding: 40px 40px 0 70px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 40px;
+    color: #1C2D53;
+    margin: 0 0 0 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #9F9D9D;
+    margin-bottom: 20px;
+    margin: 20px
+}
+
+span {
+    color: #f76a6a;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    border: none;
+    padding: 0px 0 0px 20px;
+    margin-bottom: 40px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 20px;
+    color: #1C2D53;
+    margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 17px;
+    color: #1C2D53;
+    margin-bottom: -15px;
+}
+
+input, select, textarea {
+    padding: 20px;
+    margin-block: 20px;
+    border: 1px solid #9F9D9D;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+input[type="file"] {
+    padding: 17px;
+}
+
+input:focus, 
+textarea:focus, 
+select:focus {
+  border-color: #037ccc6e; /* Change the border color to blue */
+  outline: none; /* Remove the default outline if desired */
+  box-shadow: 0 0 5px rgba(0, 100, 248, 0.4); /* Optional: Add a glowing effect */
+}
+
+#security-question{
+    width: 390px;
+}
+
+#security-answer {
+    margin-left: -208px;
+    margin-right: 410px;
+}
+
+::placeholder {
+    font-family: Poppins;
+    color: #a2a0a0;
+}
+
+label[for="security-answer"] {
+    margin-left: -208px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 200px;
+}
+
+.full-width {
+    width: 700px;
+    margin-top: 15px;
+}
+
+.btn {
+    background-color: #0070BA;
+    color: #fff;
+    border: none;
+    width: 150px;
+    padding: 12px;
+    margin-top: -20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: .8;
+}
