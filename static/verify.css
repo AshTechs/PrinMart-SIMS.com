@@ -1,0 +1,44 @@
+.otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.otp-inputs input {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#resend-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+#resend-btn:enabled {
+    cursor: pointer;
+    background-color: #0056b3;
+}
+
+#rror-message {
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .otp-inputs {
+        flex-direction: row;
+        gap: 1px;
+    }
+
+    .otp-inputs input {
+        width: 100%;
+        max-width: 15%;
+    }
+}

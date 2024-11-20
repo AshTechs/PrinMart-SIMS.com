@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrinMart SA SignUp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css')}}">
 
 </head>
 <body>
@@ -29,32 +30,29 @@
             <!--Login-->
             <div class="login-container">
                 <h2>Super Admin’s SignUp</h2>
-                <form>
+                <form id="signup-form">
                     <label for="SuperAd">Admin Full Name</label>
-                    <input type="text" id="admin-name" name="admin-name" placeholder="Type your full name">
-
+                    <input type="text" id="admin-name" name="admin-name" placeholder="Type your full name" required>
+                
                     <label for="SuperAd">Email</label>
-                    <input type="text" id="admin-email" name="admin-email" placeholder="example@gmail.com">
-        
+                    <input type="email" id="admin-email" name="admin-email" placeholder="example@gmail.com" required>
+                
                     <label for="password">Password</label>
-                    <div class="password-container">
-                        <input type="password" id="password" name="password" placeholder="Enter password">
-                    </div>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                
                     <label for="repeat-password">Repeat Password</label>
-                    <div class="password-container">
-                        <input type="password" id="repeat-password" name="password" placeholder="Repeat password">
-                        <i class="toggle-password fas fa-eye-slash" onclick="togglePasswords()"></i>
-                    </div>
-        
-                    <p>Already have an account? Signin <a href="#">here</a></p>
-        
-                    <button type="submit" class="SignUp">SignUp</button>
+                    <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat password" required>
+                    <i class="toggle-password fas fa-eye-slash" onclick="togglePassword()"></i>
+                
+                    <button type="button" class="SignUp" id="signup-button">SignUp</button>
                 </form>
+                
             </div>
         </div>
     </div>
 
-    <script src="toggleAdPassword().js"></script>
+    <script src="{{ url_for('static', filename='toggleAdpassword().js') }}"></script>
+    <script src="{{ url_for('static', filename='signup.js') }}"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>

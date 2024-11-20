@@ -21,6 +21,7 @@
 }
 
 .login-container input[type="text"],
+.login-container input[type="email"],
 .login-container input[type="password"],
 .login-container input[type="repeat-password"] {
     width: 100%;
@@ -32,6 +33,7 @@
 }
 
 .login-container input[type="text"]:focus,
+.login-container input[type="email"]:focus,
 .login-container input[type="password"]:focus {
     border-color: #007bff; /* Highlight color on focus */
     outline: none; /* Removes default outline for better appearance */

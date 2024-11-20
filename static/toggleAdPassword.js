@@ -1,6 +1,6 @@
 function togglePasswords() {
     const passwordInput = document.getElementById("password");
-    const repeatPasswordInput = document.getElementById("repeat-password");
+    const repeatPasswordInput = document.getElementById("repeat_password");
     const toggleIcon = document.querySelector(".toggle-password");
 
     if (passwordInput.type === "password" && repeatPasswordInput.type === "password") {

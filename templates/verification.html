@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrinMart SA Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='verify.css')}}">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>Welcome to PrinMart</h1>
+            <p>School Information Management System</p>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="logo">
+                <div class="top-left"></div>
+                <div class="top-right"></div>
+                <div class="bottom-left"></div>
+                <div class="text">PrinMart  <span>SIMS</span></div>
+            </div>
+
+            <!--Verification-->
+            <div class="login-container">
+                <h2>Verify your email</h2>
+                <p>Please enter the 6-Digit OTP we just sent to your email.</p>
+                <div class="otp-inputs">
+                    <input type="text" maxlength="1" id="digit1" class="otp-digit">
+                    <input type="text" maxlength="1" id="digit2" class="otp-digit">
+                    <input type="text" maxlength="1" id="digit3" class="otp-digit">
+                    <input type="text" maxlength="1" id="digit4" class="otp-digit">
+                    <input type="text" maxlength="1" id="digit5" class="otp-digit">
+                    <input type="text" maxlength="1" id="digit6" class="otp-digit">
+                </div>
+                <div id="error-message" style="display:none; color:red;">Invalid verification code. Please try again.</div>
+                <button id="resend-btn" disabled>Resend code <span id="timer">60</span></button>
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
