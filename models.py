@@ -1,11 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, timedelta, timezone
+from flask_mail import Mail
 import random
 import string
-from flask_mail import Mail
 
 # Create the Mail instance globally
 mail = Mail()
-
 db = SQLAlchemy()
 
 class SuperAdmin(db.Model):
@@ -18,3 +18,9 @@ class SuperAdmin(db.Model):
 def generate_verification_code():
     """Generate a random 6-digit verification code."""
     return ''.join(random.choices(string.digits, k=6))
+ 
+def is_code_valid(admin):
+    """Check if the verification code is still valid."""
+    if admin.code_generated_at:
+        return datetime.now(timezone.utc) - admin.code_generated_at <= timedelta(seconds=120)
+    return False

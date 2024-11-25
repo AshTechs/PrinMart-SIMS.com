@@ -31,6 +31,9 @@
             <div class="login-container">
                 <h2>Verify your email</h2>
                 <p>Please enter the 6-Digit OTP we just sent to your email.</p>
+                
+                <input type="hidden" id="email" value="{{ email }}">
+
                 <div class="otp-inputs">
                     <input type="text" maxlength="1" id="digit1" class="otp-digit">
                     <input type="text" maxlength="1" id="digit2" class="otp-digit">
@@ -40,12 +43,13 @@
                     <input type="text" maxlength="1" id="digit6" class="otp-digit">
                 </div>
                 <div id="error-message" style="display:none; color:red;">Invalid verification code. Please try again.</div>
-                <button id="resend-btn" disabled>Resend code <span id="timer">60</span></button>
+                <button id="resend-btn" disabled>Resend code <span id="timer">120</span></button>
                 <p id="message"></p>
             </div>
         </div>
     </div>
 
+    <script src="{{ url_for('static', filename='verification.js') }}"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>

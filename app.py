@@ -11,13 +11,6 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = '5f4fd404497ec45f1627a07a412bac49'
 
-    # Initialize extensions
-    db.init_app(app)
-    mail.init_app(app)
-
-    # Register Blueprints
-    app.register_blueprint(admin_bp, url_prefix='/admin')
-
     # Email configuration
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 587
@@ -27,11 +20,18 @@ def create_app():
     app.config['MAIL_PASSWORD'] = 'chdz ahba unkb nkvx'
     app.config['MAIL_DEFAULT_SENDER'] = 'ashbelh@gmail.com'
 
+    # Initialize extensions
+    db.init_app(app)
+    mail.init_app(app)
+
+    # Register Blueprints
+    app.register_blueprint(admin_bp, url_prefix='/admin')
+
     # Create and reset database tables
     with app.app_context():
         # Drop all existing tables
         db.drop_all()
-        # Create new tables
+        # Create all tables
         db.create_all()
 
     return app

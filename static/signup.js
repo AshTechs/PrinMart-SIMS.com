@@ -26,12 +26,11 @@ document.getElementById('signup-button').addEventListener('click', async () => {
         const result = await response.json();
 
         if (response.ok) {
-            alert(result.message); // "Super admin registered successfully!"
-
-            // Redirect to verification page after successful registration
+            alert(`${result.message} A verification code has been sent to your email.`);
+            // Redirect to the verification page
             window.location.href = `/admin/verification/${email}`;
         } else {
-            alert(result.error); // Display the error message from the server
+            alert(result.error); // Show error message from the server
         }
     } catch (error) {
         alert('An error occurred while submitting the form. Please try again.');
