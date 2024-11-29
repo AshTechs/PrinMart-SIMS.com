@@ -28,8 +28,11 @@
 
             <!--Login-->
             <div class="login-container">
+
                 <h2>Super Admin’s Login</h2>
-                <form>
+
+                <form action="/admin/SuperAdlogin" id="login-form" method="POST">
+
                     <label for="name">Admin Name</label>
                     <input type="text" id="name" name="student-id" placeholder="Type Your Name">
         
@@ -47,7 +50,8 @@
         </div>
     </div>
 
-    <script src="togglePassword().js"></script>
+    <script src="{{ url_for('static', filename='togglePassword.js') }}"></script>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>

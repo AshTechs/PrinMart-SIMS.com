@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, render_template, session, url_for
 from werkzeug.security import generate_password_hash
 from models import db, SuperAdmin, generate_verification_code, mail
+from werkzeug.security import check_password_hash
 from flask_mail import Message
 import logging
 import re
@@ -159,3 +160,47 @@ def resend_verification_code():
 def admindashboard():
     return render_template('SuperAdlogin.html')
 
+@admin_bp.route('/SuperAdlogin', methods=['POST'])
+def super_admin_login():
+    """Handle super admin login."""
+    try:
+        # Determine the content type of the request
+        if request.content_type == 'application/json':
+            data = request.json
+        else:
+            data = request.form.to_dict()
+
+        # Get the admin name and password
+        name = data.get('name', '').strip()
+        password = data.get('password', '').strip()
+
+        # Validate inputs
+        if not name or not password:
+            return jsonify({'error': 'Name and password are required!'}), 400
+
+        # Check if the admin exists in the database
+        admin = SuperAdmin.query.filter_by(name=name).first()
+        if not admin:
+            return jsonify({'error': 'Invalid credentials. Admin not found!'}), 401
+
+        # Verify the password
+        if not check_password_hash(admin.password, password):
+            return jsonify({'error': 'Invalid credentials. Incorrect password!'}), 401
+
+        # Establish a session for the admin
+        session['admin_id'] = admin.id
+        session['admin_name'] = admin.name
+        session['authenticated'] = True
+
+        return jsonify({'message': 'Login successful!', 'redirect_url': url_for('admin.dashboard')}), 200
+
+    except Exception as e:
+        return jsonify({'error': f'An error occurred during login: {str(e)}'}), 500
+
+@admin_bp.route('/admindashboard', methods=['GET'])
+def dashboard():
+    """Super Admin Dashboard."""
+    if not session.get('authenticated'):
+        return jsonify({'error': 'Unauthorized access! Please log in.'}), 401
+
+    return render_template('admindashboard.html', admin_name=session.get('admin_name'))
