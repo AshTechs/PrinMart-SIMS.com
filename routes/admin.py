@@ -9,6 +9,10 @@ import re
 # Create the Blueprint
 admin_bp = Blueprint('admin', __name__)
 
+# Password validation regex
+password_regex = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$"
+
+
 # Logger configuration
 mail_logger = logging.getLogger("flask_mail")
 mail_logger.setLevel(logging.DEBUG)
@@ -34,14 +38,23 @@ def register_super_admin():
     password = data.get("password", "").strip()
     repeat_password = data.get("repeat_password", "").strip()
 
+    # Validate fields
     if not name or not email or not password or not repeat_password:
         return jsonify({'error': 'All fields are required!'}), 400
 
+    # Validates email
     if not is_valid_email(email):
         return jsonify({'error': 'Invalid email format.'}), 400
 
+    # Check if passwords match
     if password != repeat_password:
         return jsonify({'error': 'Passwords do not match!'}), 400
+    
+    # Validate password with regex
+    if not re.match(password_regex, password):
+        return jsonify({
+            'error': 'Password must be at least 6 characters long and include:\n- An uppercase letter\n- A lowercase letter\n- A number\n- A special character'
+        }), 400
 
     existing_admin = SuperAdmin.query.filter_by(email=email).first()
     if existing_admin:
@@ -185,7 +198,7 @@ def super_admin_login():
 
         # Verify the password
         if not check_password_hash(admin.password, password):
-            return jsonify({'error': 'Invalid credentials. Incorrect password!'}), 401
+            return jsonify({'error': 'Invalid credentials.'}), 401
 
         # Establish a session for the admin
         session['admin_id'] = admin.id

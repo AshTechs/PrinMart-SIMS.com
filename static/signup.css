@@ -3,3 +3,14 @@ i {
     position: absolute;
     cursor: pointer;
 }
+
+.link {
+    float: right;
+    color: black;
+    margin-right: 8px;
+}
+
+.link a {
+    text-decoration: none;
+    color: #007BFF;
+}

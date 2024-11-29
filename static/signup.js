@@ -9,6 +9,14 @@ document.getElementById('signup-button').addEventListener('click', async () => {
         alert('All fields are required!');
         return;
     }
+
+    // Validate password rules
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    if (!passwordRegex.test(password)) {
+        alert('Password must be at least 6 characters long and include:\n- An uppercase letter\n- A lowercase letter\n- A number\n- A special character');
+        return;
+    }
+
     if (password !== repeatPassword) {
         alert('Passwords do not match!');
         return;

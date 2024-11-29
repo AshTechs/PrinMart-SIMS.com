@@ -43,9 +43,17 @@
                     <label for="repeat_password">Repeat Password</label>
                     <input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat password" required>
                     <i class="toggle-password fas fa-eye-slash" onclick="togglePasswords()"></i>
-                
-                    <button type="button" class="SignUp" id="signup-button">SignUp</button>
+                    <p class="link">Login <a href="{{ url_for('admin.super_admin_login') }}">here</a></p>
+                    <button type="button" class="SignUp" id="signup-button">Sign Up</button>
                 </form>
+
+                <p>
+                    Password must be at least 6 characters long and include:
+                </br> - An uppercase letter
+                </br> - A lowercase letter
+                </br>- A number
+                </br>- A special character
+                </p>
                 
             </div>
         </div>

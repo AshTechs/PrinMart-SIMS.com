@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const resendBtn = document.getElementById('resend-btn');
     const errorMessageDiv = document.getElementById('error-message');
     const timerDiv = document.getElementById('timer');
-    const csrfToken = document.querySelector('input[name="csrf_token"]')?.value; // CSRF token if available
 
     let countdown;
     let remainingTime = 120; // Countdown timer (120 seconds)
+
+    // Initially hide the error message
+    errorMessageDiv.style.display = 'none';
 
     // Function to update the timer display
     function updateTimer() {
@@ -33,21 +35,25 @@ document.addEventListener('DOMContentLoaded', function () {
     // Focus next input automatically on each key entry
     otpInputs.forEach((input, index) => {
         input.addEventListener('input', function () {
+            
+            // If the input is a single character, move to the next input
             if (input.value.length === 1 && index < otpInputs.length - 1) {
-                otpInputs[index + 1].focus();
+                otpInputs[index + 1].focus(); // Focus next input field
             }
-            // Automatically verify when all inputs are filled
+    
+            // Check if all fields are filled, then trigger OTP verification
             if (otpInputs.every(inp => inp.value.length === 1)) {
-                verifyOtp();
+                console.log("All fields filled, verifying OTP...");
+                verifyOtp(); // Verify OTP as soon as all fields are filled
             }
         });
-
+    
         input.addEventListener('keydown', function (event) {
             if (event.key === 'Backspace' && input.value === '' && index > 0) {
-                otpInputs[index - 1].focus();
+                otpInputs[index - 1].focus(); // Move focus to previous input if Backspace is pressed
             }
         });
-    });
+    });    
 
     // Handle pasting of the OTP
     otpInputs.forEach(input => {
@@ -70,18 +76,17 @@ document.addEventListener('DOMContentLoaded', function () {
     async function verifyOtp() {
         let otpCode = '';
         otpInputs.forEach(input => {
-            otpCode += input.value;
+            otpCode += input.value; // Collecting OTP code from input fields
         });
     
-        resetInputBorders();
-        errorMessageDiv.style.display = 'none';
-    
+        // If OTP code is not 6 digits, show an error
         if (otpCode.length !== 6) {
             errorMessageDiv.textContent = 'Please fill out all the digits.';
             errorMessageDiv.style.display = 'block';
             return;
         }
     
+        // Call the backend to verify the OTP
         try {
             const response = await fetch('/admin/verify_code', {
                 method: 'POST',
@@ -109,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
             errorMessageDiv.textContent = 'An error occurred. Please try again later.';
             errorMessageDiv.style.display = 'block';
         }
-    }    
+    }            
 
     // Handle resend button click
         resendBtn.addEventListener('click', async function (event) {

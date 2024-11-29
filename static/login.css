@@ -35,8 +35,8 @@
 .login-container input[type="text"]:focus,
 .login-container input[type="email"]:focus,
 .login-container input[type="password"]:focus {
-    border-color: #007bff; /* Highlight color on focus */
-    outline: none; /* Removes default outline for better appearance */
+    border-color: #007bff; 
+    outline: none; 
 }
 
 .password-container {
@@ -71,6 +71,7 @@
     background-color: #0070BA;
     color: #ffffff;
     border: none;
+    margin-bottom: 10px;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
@@ -79,4 +80,15 @@
 
 .login-button:hover {
     background-color: #0056b3;
+}
+
+.link {
+    float: right;
+    color: black;
+    margin-right: 8px;
+}
+
+.link a {
+    text-decoration: none;
+    color: #007BFF;
 }
