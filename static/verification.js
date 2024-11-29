@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const otpInputs = document.querySelectorAll('.otp-digit');
+    const otpInputs = Array.from(document.querySelectorAll('.otp-digit'));
     const resendBtn = document.getElementById('resend-btn');
     const errorMessageDiv = document.getElementById('error-message');
     const timerDiv = document.getElementById('timer');
@@ -33,27 +33,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Focus next input automatically on each key entry
+
+    // OR (alternative way)
+    // const otpInputs = [...document.querySelectorAll('.otp-digit')];
+
+    // Rest of the code remains unchanged
     otpInputs.forEach((input, index) => {
         input.addEventListener('input', function () {
-            
             // If the input is a single character, move to the next input
             if (input.value.length === 1 && index < otpInputs.length - 1) {
                 otpInputs[index + 1].focus(); // Focus next input field
             }
-    
+
             // Check if all fields are filled, then trigger OTP verification
             if (otpInputs.every(inp => inp.value.length === 1)) {
-                console.log("All fields filled, verifying OTP...");
                 verifyOtp(); // Verify OTP as soon as all fields are filled
             }
         });
     
+        // Handle backspace to navigate to the previous input
         input.addEventListener('keydown', function (event) {
             if (event.key === 'Backspace' && input.value === '' && index > 0) {
-                otpInputs[index - 1].focus(); // Move focus to previous input if Backspace is pressed
+                otpInputs[index - 1].focus(); // Move focus to previous input
             }
         });
-    });    
+    });        
 
     // Handle pasting of the OTP
     otpInputs.forEach(input => {
@@ -100,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
             if (response.ok && result.success) {
                 otpInputs.forEach(input => {
+                    errorMessageDiv.textContent = 'Verified successfully';
+                    errorMessageDiv.style.display = 'block';
                     input.style.border = '1px solid green'; // Highlight in green for success
                 });
                 window.location.href = result.redirect_url; // Redirect to the admin dashboard

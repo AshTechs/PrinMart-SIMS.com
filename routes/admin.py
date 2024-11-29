@@ -79,7 +79,7 @@ def register_super_admin():
 
         # Send verification email
         msg = Message("Account Verification", recipients=[email])
-        msg.body = f"Your verification code is: {verification_code}. It expires in 2 minutes."
+        msg.body = f"Thank you for signing up with PrinMart School Information Management System(SIMS). Your new verification code is: {verification_code}. It is valid for 120 seconds."
         mail.send(msg)
         mail_logger.debug(f"Verification email sent to {email}")
 
