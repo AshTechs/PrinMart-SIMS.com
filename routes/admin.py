@@ -23,7 +23,6 @@ def is_valid_email(email):
 def register_super_admin():
     """Handle super admin registration."""
     if request.method == 'GET':
-        # Render SuperAdsignup.html
         return render_template('SuperAdsignup.html')
 
     data = request.json or request.form.to_dict()
@@ -34,27 +33,26 @@ def register_super_admin():
     password = data.get("password", "").strip()
     repeat_password = data.get("repeat_password", "").strip()
 
-    # Validation to check if all fields are filled
     if not name or not email or not password or not repeat_password:
         return jsonify({'error': 'All fields are required!'}), 400
 
-    # Validate email format
     if not is_valid_email(email):
         return jsonify({'error': 'Invalid email format.'}), 400
 
-    # Validate that passwords match
     if password != repeat_password:
         return jsonify({'error': 'Passwords do not match!'}), 400
 
-    # Check if the email already exists
     existing_admin = SuperAdmin.query.filter_by(email=email).first()
     if existing_admin:
         return jsonify({'error': 'Email already exists! Please use a different email.'}), 400
 
     try:
-        # Hash the password and create a new admin
         hashed_password = generate_password_hash(password)
         verification_code = generate_verification_code()
+        
+        # Store generated OTP in session
+        session['generated_otp'] = verification_code
+        
         new_admin = SuperAdmin(
             name=name,
             email=email,
@@ -62,86 +60,33 @@ def register_super_admin():
             verification_code=verification_code
         )
 
-        # Save to database
         db.session.add(new_admin)
         db.session.commit()
 
         # Send verification email
         msg = Message("Account Verification", recipients=[email])
-        msg.body = f"Thank you for signing up with PrinMart School Information Management System(SIMS). Your verification code is: {verification_code}. It expires in 2 minutes." 
+        msg.body = f"Your verification code is: {verification_code}. It expires in 2 minutes."
         mail.send(msg)
         mail_logger.debug(f"Verification email sent to {email}")
 
-# Return success message to client
-        return jsonify({'message': 'Super admin registered successfully!'}), 201
-    
+        redirect_url = url_for('admin.verify_code', email=email)
+        return jsonify({'message': 'Super admin registered successfully!', 'redirect_url': redirect_url
+        }), 201
+
     except Exception as e:
         mail_logger.error(f"Database or email error: {str(e)}")
         db.session.rollback()
         return jsonify({'error': f'An error occurred: {str(e)}'}), 500
 
-
 @admin_bp.route('/verification/<email>', methods=['GET', 'POST'])
 def verification_page(email):
-    """Handle the email verification process."""
     if request.method == 'GET':
         return render_template('verification.html', email=email)
-
-    # For POST, handle verification code submission
-    data = request.json or request.form.to_dict()
-    verification_code = data.get('verification_code', '').strip()
-
-    # Query the admin by email
-    admin = SuperAdmin.query.filter_by(email=email).first()
-
-    if not admin:
-        return jsonify({'error': 'Invalid email address.'}), 400
-
-    if admin.verification_code != verification_code:
-        return jsonify({'error': 'Invalid verification code.'}), 400
-
-    # Clear the verification code (mark as verified)
-    admin.verification_code = None
-    db.session.commit()
-
-    return jsonify({'message': 'Account successfully verified!'}), 200
-
-@admin_bp.route('/resend_code', methods=['POST'])
-def resend_verification_code():
-    """Handle resending a new verification code."""
-    try:
-        data = request.json or request.form.to_dict()
-        email = data.get("email")
-
-        if not email:
-            return jsonify({'error': 'Email is required.'}), 400
-
-        # Find the user in the database
-        admin = SuperAdmin.query.filter_by(email=email).first()
-        if not admin:
-            return jsonify({'error': 'User not found.'}), 404
-
-        # Generate a new verification code
-        new_verification_code = generate_verification_code()
-
-        # Update the user's record
-        admin.verification_code = new_verification_code
-        db.session.commit()
-
-        # Send the new verification code via email
-        msg = Message("Resend Verification Code", recipients=[email])
-        msg.body = f"Thank you for signing up with PrinMart School Information Management System(SIMS). Your new verification code is: {new_verification_code}. It is valid for 120 seconds."
-        mail.send(msg)
-
-        return jsonify({'message': 'New verification code sent successfully.'}), 200
-
-    except Exception as e:
-        mail_logger.error(f"Error while resending code: {str(e)}")
-        return jsonify({'error': f'An error occurred: {str(e)}'}), 500
 
 
 @admin_bp.route('/verify_code', methods=['POST'])
 def verify_code():
+    """Verify the OTP submitted by the user."""
     print("Received verification request")
     data = request.get_json()
     print("Request data:", data)
@@ -167,8 +112,50 @@ def verify_code():
     if entered_otp == generated_otp:
         print("OTP matched successfully")
         session['admin_authenticated'] = True
-        session.pop('generated_otp', None)
+        session.pop('generated_otp', None)  # Clear the OTP after successful verification
         return jsonify(success=True, redirect_url=url_for('admin.admindashboard')), 200
     else:
         print("OTP mismatch")
         return jsonify(success=False, error="Invalid verification code"), 400
+    
+@admin_bp.route('/resend_code', methods=['POST'])
+def resend_verification_code():
+    """Handle resending a new verification code."""
+    try:
+        data = request.json or request.form.to_dict()
+        email = data.get("email")
+
+        if not email:
+            return jsonify({'error': 'Email is required.'}), 400
+
+        # Find the user in the database
+        admin = SuperAdmin.query.filter_by(email=email).first()
+        if not admin:
+            return jsonify({'error': 'User not found.'}), 404
+
+        # Generate a new verification code
+        new_verification_code = generate_verification_code()
+
+        # Update the user's record
+        admin.verification_code = new_verification_code
+        db.session.commit()
+
+        # Update the session with the new OTP
+        session['generated_otp'] = new_verification_code
+
+        # Send the new verification code via email
+        msg = Message("Resend Verification Code", recipients=[email])
+        msg.body = f"Thank you for signing up with PrinMart School Information Management System(SIMS). Your new verification code is: {new_verification_code}. It is valid for 120 seconds."
+        mail.send(msg)
+
+        return jsonify({'message': 'New verification code sent successfully.'}), 200
+
+    except Exception as e:
+        mail_logger.error(f"Error while resending code: {str(e)}")
+        db.session.rollback()
+        return jsonify({'error': f'An error occurred: {str(e)}'}), 500
+    
+@admin_bp.route('/SuperAdlogin', methods=['GET'])
+def admindashboard():
+    return render_template('SuperAdlogin.html')
+

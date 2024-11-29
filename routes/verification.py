@@ -60,3 +60,37 @@
 #def admin_dashboard():
 #    """Render admin dashboard."""
 #    return render_template('admindashboard.html')
+
+
+@admin_bp.route('/resend_code', methods=['POST'])
+def resend_verification_code():
+    """Handle resending a new verification code."""
+    try:
+        data = request.json or request.form.to_dict()
+        email = data.get("email")
+
+        if not email:
+            return jsonify({'error': 'Email is required.'}), 400
+
+        # Find the user in the database
+        admin = SuperAdmin.query.filter_by(email=email).first()
+        if not admin:
+            return jsonify({'error': 'User not found.'}), 404
+
+        # Generate a new verification code
+        new_verification_code = generate_verification_code()
+
+        # Update the user's record
+        admin.verification_code = new_verification_code
+        db.session.commit()
+
+        # Send the new verification code via email
+        msg = Message("Resend Verification Code", recipients=[email])
+        msg.body = f"Thank you for signing up with PrinMart School Information Management System(SIMS). Your new verification code is: {new_verification_code}. It is valid for 120 seconds."
+        mail.send(msg)
+
+        return jsonify({'message': 'New verification code sent successfully.'}), 200
+
+    except Exception as e:
+        mail_logger.error(f"Error while resending code: {str(e)}")
+        return jsonify({'error': f'An error occurred: {str(e)}'}), 500
