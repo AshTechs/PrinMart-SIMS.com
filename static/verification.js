@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
         try {
-            const response = await fetch('/verify_code', {
+            const response = await fetch('/admin/verify_code', {
                 method: 'POST',
                 body: JSON.stringify({ verification_code: otpCode }),
                 headers: {
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const email = document.querySelector('#email').value; // Assuming email is in a hidden input field
         
-            const response = await fetch('/resend_code', {
+            const response = await fetch('/admin/resend_code', {
                 method: 'POST',
                 body: JSON.stringify({ email }),
                 headers: {

@@ -1,5 +1,6 @@
 from flask import Flask
-from models import db, mail
+from flask_cors import CORS
+from models import db, mail, timedelta
 from routes.admin import admin_bp
 
 def create_app():
@@ -10,6 +11,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sims.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = '5f4fd404497ec45f1627a07a412bac49'
+    app.config['SESSION_PERMANENT'] = True
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=2)  # Adjust as needed
+
 
     # Email configuration
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -23,6 +27,7 @@ def create_app():
     # Initialize extensions
     db.init_app(app)
     mail.init_app(app)
+    CORS(app)
 
     # Register Blueprints
     app.register_blueprint(admin_bp, url_prefix='/admin')
@@ -33,6 +38,8 @@ def create_app():
         db.drop_all()
         # Create all tables
         db.create_all()
+
+        print(app.url_map)
 
     return app
 

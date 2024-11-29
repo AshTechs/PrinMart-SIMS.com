@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, render_template, session, url_for
 from werkzeug.security import generate_password_hash
-from models import db, SuperAdmin, generate_verification_code, mail, datetime, timedelta, timezone
+from models import db, SuperAdmin, generate_verification_code, mail
 from flask_mail import Message
 import logging
 import re
@@ -144,20 +144,31 @@ def resend_verification_code():
 def verify_code():
     print("Received verification request")
     data = request.get_json()
+    print("Request data:", data)
+
+    if not data:
+        print("Invalid or missing JSON data")
+        return jsonify(success=False, error="Invalid or missing JSON data"), 400
+
     entered_otp = data.get('verification_code')
+    print("Entered OTP:", entered_otp)
+
+    if not entered_otp:
+        print("Missing verification code")
+        return jsonify(success=False, error="Missing verification code"), 400
+
     generated_otp = session.get('generated_otp')
+    print("Generated OTP in session:", generated_otp)
 
     if not generated_otp:
+        print("No OTP generated in session")
         return jsonify(success=False, error="No OTP generated. Request a new one."), 400
 
     if entered_otp == generated_otp:
+        print("OTP matched successfully")
         session['admin_authenticated'] = True
         session.pop('generated_otp', None)
-        return jsonify(success=True, redirect_url=url_for('/admin.admindashboard')), 200
+        return jsonify(success=True, redirect_url=url_for('admin.admindashboard')), 200
     else:
+        print("OTP mismatch")
         return jsonify(success=False, error="Invalid verification code"), 400
-
-# Example admin dashboard route
-@admin_bp.route('/admindashboard')
-def admin_dashboard():
-    return render_template('admindashboard.html')
