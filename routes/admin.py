@@ -210,10 +210,10 @@ def super_admin_login():
     except Exception as e:
         return jsonify({'error': f'An error occurred during login: {str(e)}'}), 500
 
-@admin_bp.route('/admindashboard', methods=['GET'])
+@admin_bp.route('/SuperAdmindashboard', methods=['GET'])
 def dashboard():
     """Super Admin Dashboard."""
     if not session.get('authenticated'):
         return jsonify({'error': 'Unauthorized access! Please log in.'}), 401
 
-    return render_template('admindashboard.html', admin_name=session.get('admin_name'))
+    return render_template('SuperAdmindashboard.html', admin_name=session.get('admin_name'))

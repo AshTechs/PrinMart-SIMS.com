@@ -35,7 +35,7 @@ def create_app():
     # Create and reset database tables
     with app.app_context():
         # Drop all existing tables
-        db.drop_all()
+        #db.drop_all()
         # Create all tables
         db.create_all()
 
