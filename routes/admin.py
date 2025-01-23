@@ -217,3 +217,68 @@ def dashboard():
         return jsonify({'error': 'Unauthorized access! Please log in.'}), 401
 
     return render_template('SuperAdmindashboard.html', admin_name=session.get('admin_name'))
+
+@admin_bp.route('/schreg', methods=['GET', 'POST'])
+def schreg():
+    # Function logic
+    return render_template('schreg.html')
+
+@admin_bp.route('/add_school', methods=['POST'])
+def add_school():
+    # Extract form data
+    data = request.form.to_dict()
+    files = request.files
+
+    # Access fields by their `name` attributes
+    first_name = data.get('first_name')
+    middle_name = data.get('middle_name')
+    last_name = data.get('last_name')
+    password = data.get('password')
+    repeat_password = data.get('repeat_password')
+    phone_number = data.get('phone_number')
+    school_name = data.get('school_name')
+    school_location = data.get('school_location')
+    school_address = data.get('school_address')
+    school_postal_address = data.get('school_postal_address')
+    school_email = data.get('school_email')
+    security_question = data.get('security_question')
+    security_answer = data.get('security_answer')
+    mission_statement = data.get('mission_statement')
+    school_logo = files.get('school_logo')
+
+    # Validate passwords
+    if password != repeat_password:
+        return jsonify({'error': 'Passwords do not match!'}), 400
+
+    # Save the logo file
+    logo_path = None
+    if school_logo:
+        logo_path = f'static/uploads/{school_logo.filename}'
+        school_logo.save(logo_path)
+
+    # Save the school information (e.g., to a database)
+    school_data = {
+        "headmaster": {
+            "first_name": first_name,
+            "middle_name": middle_name,
+            "last_name": last_name,
+            "password": password,  # Use a hashing algorithm here
+            "phone_number": phone_number,
+        },
+        "school": {
+            "name": school_name,
+            "location": school_location,
+            "address": school_address,
+            "postal_address": school_postal_address,
+            "email": school_email,
+            "security_question": security_question,
+            "security_answer": security_answer,
+            "mission_statement": mission_statement,
+            "logo": logo_path,
+        }
+    }
+
+    # Save to DB logic (or simulated saving for now)
+    print("School Registered:", school_data)
+
+    return jsonify({'message': 'School registered successfully!', 'data': school_data}), 201

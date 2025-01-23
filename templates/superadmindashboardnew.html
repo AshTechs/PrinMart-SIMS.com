@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primmart SIMS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Primmart SIMS</h2>
+            <nav>
+                <ul>
+                    <li class="active">Overview</li>
+                    <li>School</li>
+                    <li>Billing</li>
+                    <li>Messaging</li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <button>Logout</button>
+            </div>
+        </aside>
+        <main>
+            <header>
+                <h1>Overview</h1>
+                <button class="add-school">+ Add School</button>
+            </header>
+            <section class="overview-cards">
+                <div class="card">
+                    <h3>Schools</h3>
+                    <p>206</p>
+                </div>
+                <div class="card">
+                    <h3>Total Teachers</h3>
+                    <p>206</p>
+                </div>
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p>206</p>
+                </div>
+            </section>
+            <section class="school-list">
+                <header>
+                    <h2>School List</h2>
+                    <input type="text" placeholder="Search for school name" />
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Enrollment ID</th>
+                            <th>Administrator</th>
+                            <th>Email</th>
+                            <th>School</th>
+                            <th>Status</th>
+                            <th>Signup Date & Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="school-table-body">
+                        <!-- Rows dynamically inserted here -->
+                    </tbody>
+                </table>
+                <footer class="pagination">
+                    <button>Previous</button>
+                    <span>Page 1 of 5</span>
+                    <button>Next</button>
+                </footer>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
