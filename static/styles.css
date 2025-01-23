@@ -1,4 +1,13 @@
 /* Basic Reset */
+
+:root {
+    --primary-color: #101828;
+    --secondary-color: #EF9360;
+    --tertiary-color: #FFF;
+    --text-light: #98A2B3;
+    --white: #ffff;
+}
+
 * {
     margin: 0;
     padding: 0;
