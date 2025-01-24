@@ -3,7 +3,7 @@
     --secondary-color: #EF9360;
     --tertiary-color: #FFF;
     --text-light: #98A2B3;
-    --select: #037CCC;
+    --select: #1D2939;
 }
 
 * {
@@ -24,82 +24,18 @@ body {
     width: 100%;
 }
 
-.sidebar {
-    width: 250px;
-    background-color: var(--primary-color);
-    padding: 20px;
-    border-right: 1px solid #ddd;
-}
-
-.logo img {
-    width: 50px;
-}
-
 h2 {
     font-size: 20px;
-    color: #1C2D53;
+    color: var(--primary-color);
 }
 
-.table-section h2 {
-    font-weight: 800;
-}
-
-.menu {
-    display: flex;
-    flex-direction: column;
-    height: 1,300px;
-}
-
-.menu-item {
-    padding: 15px;
-    color: var(--text-light);
+.stats a {
+    margin: 10px 0px 105px 60px;
+    background-color: var(--primary-color);
+    padding: 0px 20px 0px 20px;
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.menu-item svg {
-    margin: 0 5px -5px 0;
-}
-
-.menu-item.active {
-    background: var(--select);
-    color: #fff;
-    border-radius: 20px;
-}
-
-.menu-item:hover {
-    background: var(--select);
-    color: #fff;
-    border-radius: 20px;
-}
-
-.bottom {
-    flex-direction: column;
-    display: flex;
-    min-height: 40rem;
-    border-top: 1px solid var(--Gray-800, #1D2939);
-    border-bottom: 1px solid var(--Gray-800, #1D2939);
-}
-
-.logout {
-    width: 100%;
-    padding: 20px;
-    font-size: 15px;
-    color: #ff4d4d;
-    border: none;
-    background: none;
-    text-align: left;
-    margin-top: auto;
-    cursor: pointer;
-}
-
-.logout:hover{
-    opacity: 95%;
-}
-
-.logout svg {
-    margin: 0 5px -5px 0;
+    color: var(--tertiary-color);
 }
 
 .main-content {
@@ -111,7 +47,7 @@ h2 {
     display: flex;
     height: 85px;
     padding: 15px;
-    background: #FFF;
+    background: var(--tertiary-color);
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
@@ -142,131 +78,46 @@ h2 {
     margin-left: 10px;
 }
 
-.stats {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.stat-card {
-    flex: 1;
-    padding:  10px 0 0 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    margin-right: 20px
-}
-
-.stat-card h2 {
-    color: #1C2D53;
-    margin: -65px 0px 0px 90px;
-}
-
-.stat-card a{
-    color: #0070BA;
-    margin: 0 0 0 90px;
-    text-decoration: none
-}
-
-.stat-card_population {
-    border-radius: 8px;
-    background: #037CCC;
-    padding: 15px 15px 15px;
-    color: #fff
-}
-
-.total {
-    color: #fff;
-}
-
-.pop {
-    font-weight: 1000;
-    font-size: 40px;
-}
-
-.stat-card_population p {
-    margin: -35px 0px 0px 85px;
-}
-
-.icon-bg {
-    display: flex;
-    width: 75px;
-    height: 75px;
-    padding: 17px 18px 18px 17px;
-    justify-content: center;
+.title {
+    flex: 1 1 0;
+    justify-content: flex-start;
     align-items: center;
-    flex-shrink: 0;
-    border-radius: 8px;
+    gap: 220px;
+    display: inline-flex
 }
 
-#staff {
-    background: rgba(0, 112, 186, 0.20);
+.school-list {
+    color: #101828;
+    line-height: 24px;
 }
 
-#classes {
-    background: #FFEACB;
+.search-bar {
+    flex: 1 1 0;
+    height: 32px;
+    padding-left: 30px;
+    padding-right: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 32px;
+    border: 1px #667085 solid;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex
 }
 
-#subject {
-    background: #FFBFE5;
+.schools select {
+    border-radius: 20px;
+    padding: 2px;
+    text-align: center
 }
 
-.stat-card span {
-    color: #0070BA;
+.schools input[type="text"]:focus,
+.schools select[id="type"]:focus {
+    border-color: var(--select);
+    outline: none;
 }
 
-.population {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.table-section {
-    margin-bottom: 20px;
-}
-
-.teachers, .classes {
-    padding: 20px 60px 0 10px;
-    background: #fff;
-    height: 70px;
-    border-radius: 8px 8px 0 0;
-}
-
-.table-section h2 {
-    display: inline-block;
-    font-size: 25px;
-}
-
-.see-all {
-    float: right;
-    font-size: 18px;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.table th, .table td {
-    padding: 20px;
-    /*border-block: 1px solid #ddd;*/
-    text-align: left;
-    font-size: 14px;
-    background: #FFF;
-    color: #9F9D9D;
-}
-
-.table .row1:hover {
-    background-color: #037CCC;
-}
-
-.table th {
-    background-color: #fff;
-    font-weight: 600;
-    border: 0;
-    color: #1c2d53;
-}
-
-.table td a {
-    color: #007bff;
-    text-decoration: none;
+.lens {
+    position: absolute;
+    margin: 310px;
 }

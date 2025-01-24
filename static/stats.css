@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #101828;
+    --secondary-color: #EF9360;
+    --tertiary-color: #FFF;
+    --text-light: #98A2B3;
+    --select: #1D2939;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.stats {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.stats-card {
+    margin: 10px;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 16px;
+    color: #101828;
+    border-color: #101828;
+    border-style: solid;
+    border-top-width: 40px;
+    padding: 0px 0px 30px 10px;
+}
+
+h4 {
+    color: #fff;
+    margin: -30px 0px 30px 0px;
+}
+
+p {
+    font-weight: 700;
+}
+
+svg {
+    margin: 5px 10px -1px 0px
+}

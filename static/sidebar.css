@@ -1,0 +1,121 @@
+:root {
+    --primary-color: #101828;
+    --secondary-color: #EF9360;
+    --tertiary-color: #FFF;
+    --text-light: #98A2B3;
+    --select: #1D2939;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.logo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    margin: 0rem 0rem 1rem 0rem;
+}
+
+.top-left {
+    margin: 1.5px;
+    background-color: #6ca869; /* Green color */
+    border-radius: 0 0 50% 0;
+}
+
+.top-right {
+    margin: 1.5px;
+    background-color: #5b82b3; /* Blue color */
+    border-radius: 0 0 0 50%;
+}
+
+.bottom-left {
+    margin: 1.5px;
+    background-color: #EF9360; /* Orange color */
+    border-radius: 0 50% 0 0;
+}
+
+.text {
+    display: flex;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--tertiary-color);
+    position: absolute;
+    bottom: -6px;
+    left: 25px;
+}
+
+.text span {
+    color: #EF9360;
+    margin-left: 4px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    padding: 15px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.menu-item svg {
+    margin: 0 5px -5px 0;
+}
+
+.menu-item.active {
+    background: var(--select);
+    color: var(--tertiary-color);
+    border-radius: 20px;
+}
+
+.menu-item:hover {
+    background: var(--select);
+    color: var(--tertiary-color);
+    border-radius: 20px;
+}
+
+.bottom {
+    flex-direction: column;
+    display: flex;
+    min-height: 40rem;
+    border-top: 1px solid var(--Gray-800, #1D2939);
+    border-bottom: 1px solid var(--Gray-800, #1D2939);
+}
+
+.logout {
+    width: 100%;
+    padding: 20px;
+    font-size: 15px;
+    color: #ff4d4d;
+    border: none;
+    background: none;
+    text-align: left;
+    margin-top: auto;
+    cursor: pointer;
+}
+
+.logout:hover{
+    opacity: 95%;
+}
+
+.logout svg {
+    margin: 0 5px -5px 0;
+}

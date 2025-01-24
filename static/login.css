@@ -1,10 +1,25 @@
+:root {
+    --primary-color: #101828;
+    --secondary-color: #EF9360;
+    --tertiary-color: #FFF;
+    --text-light: #98A2B3;
+    --select: #1D2939;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
 .login-container {
-    background-color: #ffffff;
+    background-color: var(--tertiary-color);
     width: 400px;
     padding: 20px;
     margin-top: -80px;
     border-radius: 8px;
-    border: solid 1px #6e6d6e8a;
+    border: solid 1px var(--select);
 }
 
 .login-container h2 {
@@ -35,7 +50,7 @@
 .login-container input[type="text"]:focus,
 .login-container input[type="email"]:focus,
 .login-container input[type="password"]:focus {
-    border-color: #007bff; 
+    border-color: var(--select); 
     outline: none; 
 }
 
@@ -57,7 +72,7 @@
     display: inline-block;
     margin-bottom: 18px;
     font-size: 0.8rem;
-    color: #007bff;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -68,8 +83,8 @@
 .login-button, .SignUp {
     width: 100%;
     padding: 10px;
-    background-color: #0070BA;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
     border: none;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -79,7 +94,7 @@
 }
 
 .login-button:hover {
-    background-color: #0056b3;
+    background-color: var(--select);
 }
 
 .link {
@@ -90,5 +105,5 @@
 
 .link a {
     text-decoration: none;
-    color: #007BFF;
+    color: var(--primary-color);
 }
