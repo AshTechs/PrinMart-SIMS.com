@@ -1,0 +1,80 @@
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+  }
+  
+  thead {
+    background-color: #F2F4F7;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #F2F4F7;
+    cursor: pointer;
+  }
+  
+  .status {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+  }
+  
+  .status.active {
+    background-color: #e6f9e6;
+    color: #007b00;
+  }
+  
+  .status.expired {
+    background-color: #fdeaea;
+    color: #d60000;
+  }
+  
+  .status.deactivated {
+    background-color: #f1f1f4;
+    color: #333;
+  }
+  
+  .status i {
+    font-size: 16px;
+  }
+  
+  .pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .pagination button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+  
+  .pagination button:hover {
+    background-color: #ddd;
+  }
+  
+
+  

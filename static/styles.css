@@ -1,5 +1,4 @@
 /* Basic Reset */
-
 :root {
     --primary-color: #101828;
     --secondary-color: #EF9360;
@@ -37,7 +36,7 @@
 
 .left-section h1 {
     font-size: 2rem;
-    background-color: rgb(0 112 186);
+    background-color: var(--primary-color);
     padding: 10px 5px;
     width: 100%; 
     color: white; 
@@ -46,7 +45,7 @@
 
 .left-section p {
     font-size: 24px;
-    background-color: rgb(0 112 186);
+    background-color: var(--primary-color);
     padding: 10px;
     font-weight: 500;
     color: white;

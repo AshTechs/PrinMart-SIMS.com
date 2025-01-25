@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='admindashboard.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='stats.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='schtable.css')}}">
 </head>
 <body>
     <div class="container">
@@ -130,8 +131,25 @@
                         </select>
                     </div>
                 </div>
+                <table>
+                    <thead>
+                        <tr>
+                          <th>External ID</th>
+                          <th>Administrator</th>
+                          <th>Email</th>
+                          <th>School</th>
+                          <th>Status</th>
+                          <th>Signup Date & Time</th>
+                          <th> </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Dynamic rows will be added here -->
+                      </tbody>
+                </table>
             </section>
         </main>
     </div>
+    <script src="{{ url_for('static', filename='schtable.js') }}"></script>
 </body>
 </html>
