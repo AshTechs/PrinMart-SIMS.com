@@ -12,6 +12,10 @@
     padding: 8px;
     text-align: left;
   }
+
+  td {
+    font-size: 13px;
+  }
   
   tr:nth-child(even) {
     background-color: #f9f9f9;
@@ -30,7 +34,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .status.active {
@@ -38,43 +42,18 @@
     color: #007b00;
   }
   
-  .status.expired {
+  .expired {
     background-color: #fdeaea;
-    color: #d60000;
+    color: #e72b2b;
   }
   
-  .status.deactivated {
+  .deactivated {
     background-color: #f1f1f4;
-    color: #333;
+    color: #33333363;
   }
-  
-  .status i {
-    font-size: 16px;
-  }
-  
-  .pagination {
-    margin: 20px 0;
+
+  .more-options-icon {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
   }
-  
-  .pagination button {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    background-color: white;
-    cursor: pointer;
-  }
-  
-  .pagination button.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-  }
-  
-  .pagination button:hover {
-    background-color: #ddd;
-  }
-  
-
-  

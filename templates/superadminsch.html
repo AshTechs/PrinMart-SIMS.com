@@ -21,10 +21,10 @@
                 <div class="text">PrinMart  <span>SIMS</span></div>
             </div>
             <nav class="menu">
-                <a href="{{ url_for('admin.dashboard') }}" class="menu-item active"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <a href="{{ url_for('admin.dashboard') }}" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M3.67939 7.21514C3.33325 7.8475 3.33325 8.61031 3.33325 10.1359V11.1499C3.33325 13.7505 3.33325 15.0508 4.1143 15.8587C4.89535 16.6666 6.15243 16.6666 8.66658 16.6666H11.3333C13.8474 16.6666 15.1045 16.6666 15.8855 15.8587C16.6666 15.0508 16.6666 13.7505 16.6666 11.1499V10.1359C16.6666 8.61031 16.6666 7.8475 16.3205 7.21514C15.9743 6.58278 15.342 6.19032 14.0772 5.4054L12.7439 4.57789C11.407 3.74817 10.7385 3.33331 9.99992 3.33331C9.26129 3.33331 8.59284 3.74817 7.25594 4.57789L5.92261 5.4054C4.65788 6.19032 4.02552 6.58278 3.67939 7.21514ZM7.99992 13.5C7.72378 13.5 7.49992 13.7238 7.49992 14C7.49992 14.2761 7.72378 14.5 7.99992 14.5H11.9999C12.2761 14.5 12.4999 14.2761 12.4999 14C12.4999 13.7238 12.2761 13.5 11.9999 13.5H7.99992Z" fill="white"/>
                   </svg>Overview</a>
-                <a href="{{ url_for('admin.superadminsch') }}" class="menu-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                <a href="{{ url_for('admin.superadminsch') }}" class="menu-item active"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
                     <path d="M9.33317 3.00002C9.33317 4.28868 8.2885 5.33335 6.99984 5.33335C5.71117 5.33335 4.6665 4.28868 4.6665 3.00002C4.6665 1.71136 5.71117 0.666687 6.99984 0.666687C8.2885 0.666687 9.33317 1.71136 9.33317 3.00002Z" fill="#98A2B3"/>
                     <path d="M11 9.00002C11 10.2887 9.20914 11.3334 7 11.3334C4.79086 11.3334 3 10.2887 3 9.00002C3 7.71136 4.79086 6.66669 7 6.66669C9.20914 6.66669 11 7.71136 11 9.00002Z" fill="#98A2B3"/>
                     <path d="M3.74795 1.33337C3.86626 1.33337 3.98176 1.34498 4.09329 1.36708C3.82158 1.84968 3.66658 2.40676 3.66658 3.00004C3.66658 3.57888 3.81412 4.12325 4.07365 4.59761C3.96822 4.61726 3.85933 4.62755 3.74795 4.62755C2.80501 4.62755 2.0406 3.89012 2.0406 2.98046C2.0406 2.0708 2.80501 1.33337 3.74795 1.33337Z" fill="#98A2B3"/>
@@ -58,7 +58,9 @@
         <main class="main-content">
             <header class="header">
                 <div class="header-left">
-                    <h2>You are welcome {{ admin_name }}</h2>
+                    <a href="{{ url_for('admin.dashboard') }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.02022 5.64645C9.21548 5.84171 9.21548 6.15829 9.02022 6.35355L5.87377 9.5H15.3333C15.6095 9.5 15.8333 9.72386 15.8333 10C15.8333 10.2761 15.6095 10.5 15.3333 10.5H5.87377L9.02022 13.6464C9.21548 13.8417 9.21548 14.1583 9.02022 14.3536C8.82496 14.5488 8.50838 14.5488 8.31311 14.3536L4.31311 10.3536C4.11785 10.1583 4.11785 9.84171 4.31311 9.64645L8.31311 5.64645C8.50838 5.45118 8.82496 5.45118 9.02022 5.64645Z" fill="#1D1D1F"/>
+                      </svg></a>
                 </div>
                 <div class="header-right">
                     <span class="user"><div class="circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -81,17 +83,6 @@
                         <path d="M2.75787 12.5887C2.30354 12.0456 2 11.3792 2 10.6C2 9.84457 2.28526 9.19515 2.71662 8.66135C1.19288 8.77954 0 9.61293 0 10.6235C0 11.6435 1.21384 12.483 2.75787 12.5887Z" fill="#D0D5DD"/>
                         <path d="M11.9998 3.39996C11.9998 4.09457 11.8228 4.74782 11.5114 5.31705C11.6379 5.34063 11.7685 5.35297 11.9022 5.35297C13.0337 5.35297 13.951 4.46806 13.951 3.37647C13.951 2.28487 13.0337 1.39996 11.9022 1.39996C11.7602 1.39996 11.6216 1.41389 11.4878 1.44041C11.8138 2.01953 11.9998 2.68803 11.9998 3.39996Z" fill="#D0D5DD"/>
                         <path d="M13.242 12.5887C14.786 12.483 15.9998 11.6435 15.9998 10.6235C15.9998 9.61293 14.807 8.77954 13.2832 8.66135C13.7146 9.19515 13.9998 9.84457 13.9998 10.6C13.9998 11.3792 13.6963 12.0456 13.242 12.5887Z" fill="#D0D5DD"/>
-                      </svg>Schools</h4>
-                    <p class="figure">206</p>
-                </div>
-                <div class="stats-card">
-                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none">
-                        <path d="M10.8 3.39998C10.8 4.94637 9.54635 6.19998 7.99995 6.19998C6.45355 6.19998 5.19995 4.94637 5.19995 3.39998C5.19995 1.85358 6.45355 0.599976 7.99995 0.599976C9.54635 0.599976 10.8 1.85358 10.8 3.39998Z" fill="#D0D5DD"/>
-                        <path d="M12.8 10.6C12.8 12.1464 10.6509 13.4 7.99995 13.4C5.34898 13.4 3.19995 12.1464 3.19995 10.6C3.19995 9.05359 5.34898 7.79999 7.99995 7.79999C10.6509 7.79999 12.8 9.05359 12.8 10.6Z" fill="#D0D5DD"/>
-                        <path d="M4.09764 1.39996C4.23961 1.39996 4.37821 1.41389 4.51204 1.44041C4.18599 2.01953 4 2.68803 4 3.39996C4 4.09457 4.17705 4.74782 4.48848 5.31705C4.36196 5.34063 4.23129 5.35297 4.09764 5.35297C2.96611 5.35297 2.04882 4.46806 2.04882 3.37647C2.04882 2.28487 2.96611 1.39996 4.09764 1.39996Z" fill="#D0D5DD"/>
-                        <path d="M2.75787 12.5887C2.30354 12.0456 2 11.3792 2 10.6C2 9.84457 2.28526 9.19515 2.71662 8.66135C1.19288 8.77954 0 9.61293 0 10.6235C0 11.6435 1.21384 12.483 2.75787 12.5887Z" fill="#D0D5DD"/>
-                        <path d="M11.9998 3.39996C11.9998 4.09457 11.8228 4.74782 11.5114 5.31705C11.6379 5.34063 11.7685 5.35297 11.9022 5.35297C13.0337 5.35297 13.951 4.46806 13.951 3.37647C13.951 2.28487 13.0337 1.39996 11.9022 1.39996C11.7602 1.39996 11.6216 1.41389 11.4878 1.44041C11.8138 2.01953 11.9998 2.68803 11.9998 3.39996Z" fill="#D0D5DD"/>
-                        <path d="M13.242 12.5887C14.786 12.483 15.9998 11.6435 15.9998 10.6235C15.9998 9.61293 14.807 8.77954 13.2832 8.66135C13.7146 9.19515 13.9998 9.84457 13.9998 10.6C13.9998 11.3792 13.6963 12.0456 13.242 12.5887Z" fill="#D0D5DD"/>
                       </svg>Total Teachers</h4>
                     <p class="figure">206</p>
                 </div>
@@ -106,51 +97,11 @@
                       </svg>Total Students</h4>
                     <p class="figure">206</p>
                 </div>
-                <a href="{{ url_for('admin.schreg') }}">+Add school</a>
             </section>
 
             <!-- School status Table -->
-            <section class="schools">
-                <div style="width: 100%; height: 100%; padding-top: 19px; padding-bottom: 20px; padding-left: 17.50px; padding-right: 17.50px; background: #F2F4F7; justify-content: center; align-items: center; display: inline-flex">
-                    <div class="title">
-                        <p class="school-list">School list</p>
-                        <svg class="lens" xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.1666 3.83337C6.94492 3.83337 4.33325 6.44505 4.33325 9.66671C4.33325 12.8884 6.94492 15.5 10.1666 15.5C13.3882 15.5 15.9999 12.8884 15.9999 9.66671C15.9999 6.44505 13.3882 3.83337 10.1666 3.83337ZM3.33325 9.66671C3.33325 5.89276 6.39264 2.83337 10.1666 2.83337C13.9405 2.83337 16.9999 5.89276 16.9999 9.66671C16.9999 11.3737 16.374 12.9345 15.3392 14.1322L17.5201 16.3132C17.7154 16.5084 17.7154 16.825 17.5201 17.0203C17.3249 17.2155 17.0083 17.2155 16.813 17.0203L14.6321 14.8393C13.4344 15.8741 11.8736 16.5 10.1666 16.5C6.39264 16.5 3.33325 13.4407 3.33325 9.66671Z" fill="#909191"/>
-                          </svg>
-                          <input class="search-bar" type="text" placeholder="Search ID or School Name">
-                          <select id="type" required>
-                            <option value="" disabled selected>Select</option>
-                            <option value="All">All schools</option>
-                            <option value="region1">Bono Region</option>
-                            <option value="region2">Ashante Region</option>
-                            <option value="region3">Eastern Region</option>
-                            <option value="region4">Western Region</option>
-                            <option value="region5">Greater Accra Region</option>
-                            <option value="region6">Central Region</option>
-                            <option value="region7">Oti Region</option>
-                        </select>
-                    </div>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                          <th>External ID</th>
-                          <th>Administrator</th>
-                          <th>Email</th>
-                          <th>School</th>
-                          <th>Status</th>
-                          <th>Signup Date & Time</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <div class="more-options-icon"></div>
-                        <!-- Dynamic rows will be added here -->
-                      </tbody>
-                </table>
-            </section>
+            
         </main>
     </div>
-    <script src="{{ url_for('static', filename='schtable.js') }}"></script>
 </body>
 </html>

@@ -223,6 +223,11 @@ def schreg():
     # Function logic
     return render_template('schreg.html')
 
+@admin_bp.route('/superadminsch', methods=['GET', 'POST'])
+def superadminsch():
+    # Function logic
+    return render_template('superadminsch.html')
+
 @admin_bp.route('/add_school', methods=['POST'])
 def add_school():
     # Extract form data

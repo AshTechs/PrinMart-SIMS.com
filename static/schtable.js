@@ -1,4 +1,4 @@
-const tableData = [
+let tableData = [
   { id: '#0019215LMBS', admin: 'Benjamin Atakhora', email: 'nangrahills@gmail.com', school: 'Best Brain Academy', status: 'Active', date: 'Tue, Jan 24, 2023 04:40 PM' },
   { id: '#0019215LMBS', admin: 'Benjamin Akohora', email: 'nangrahills@gmail.com', school: 'Great Jesus Int. School', status: 'Deactivated', date: 'Tue, Jan 24, 2023 04:40 PM' },
   { id: '#0019215LMBS', admin: 'Benjamin Akohora', email: 'nangrahills@gmail.com', school: 'Best Brain Academy', status: 'Expired', date: 'Tue, Jun 13, 2023 10:40 PM' },
@@ -32,6 +32,30 @@ function renderTable() {
         </span>
       </td>
       <td>${row.date}</td>
+      <td>
+        <div class="more-options-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <g filter="url(#filter0_d_249_14568)">
+              <rect x="4" y="4" width="24" height="24" rx="12" fill="#F4F5F6"/>
+              <path d="M12 16C12 16.8837 11.2837 17.6 10.4 17.6C9.51639 17.6 8.80005 16.8837 8.80005 16C8.80005 15.1164 9.51639 14.4 10.4 14.4C11.2837 14.4 12 15.1164 12 16Z" fill="#101828"/>
+              <path d="M17.6 16C17.6 16.8837 16.8837 17.6 16 17.6C15.1164 17.6 14.4 16.8837 14.4 16C14.4 15.1164 15.1164 14.4 16 14.4C16.8837 14.4 17.6 15.1164 17.6 16Z" fill="#101828"/>
+              <path d="M23.2 16C23.2 16.8837 22.4837 17.6 21.6 17.6C20.7164 17.6 20 16.8837 20 16C20 15.1164 20.7164 14.4 21.6 14.4C22.4837 14.4 23.2 15.1164 23.2 16Z" fill="#101828"/>
+            </g>
+            <defs>
+              <filter id="filter0_d_249_14568" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feMorphology radius="4" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_249_14568"/>
+                <feOffset/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_249_14568"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_249_14568" result="shape"/>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </td>
     `;
     tbody.appendChild(tr);
   });
