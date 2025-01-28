@@ -12,7 +12,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = '5f4fd404497ec45f1627a07a412bac49'
     app.config['SESSION_PERMANENT'] = True
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=2)  # Adjust as needed
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=60)  # Adjust as needed
 
 
     # Email configuration

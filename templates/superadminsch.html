@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Admin Dashboard</title>
+    <title>Super Admin School</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='admindashboard.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='stats.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='schtable.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='superadminsch.css')}}">
 </head>
 <body>
     <div class="container">
@@ -61,6 +62,8 @@
                     <a href="{{ url_for('admin.dashboard') }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M9.02022 5.64645C9.21548 5.84171 9.21548 6.15829 9.02022 6.35355L5.87377 9.5H15.3333C15.6095 9.5 15.8333 9.72386 15.8333 10C15.8333 10.2761 15.6095 10.5 15.3333 10.5H5.87377L9.02022 13.6464C9.21548 13.8417 9.21548 14.1583 9.02022 14.3536C8.82496 14.5488 8.50838 14.5488 8.31311 14.3536L4.31311 10.3536C4.11785 10.1583 4.11785 9.84171 4.31311 9.64645L8.31311 5.64645C8.50838 5.45118 8.82496 5.45118 9.02022 5.64645Z" fill="#1D1D1F"/>
                       </svg></a>
+                    <li class="menu-list active"><a href="{{ url_for('admin.dashboard') }}">Profile</a></li>
+                    <li class="menu-list"><a href="{{ url_for('admin.dashboard') }}">Billing</a></li>
                 </div>
                 <div class="header-right">
                     <span class="user"><div class="circle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
